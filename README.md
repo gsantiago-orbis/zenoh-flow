@@ -11,9 +11,6 @@
 
 Zenoh-Flow is the union of Zenoh and data flow programming: a declarative framework for computations that span from the _Cloud_ to the _Thing_.
 
-:warning: **This software is still in alpha status and should _not_ be used in production. Breaking changes are likely to happen and the API is not yet stable.**
-:warning: **The documentation is still scarce. Do not hesitate to contact us on Discord.**
-
 ## Description
 
 Zenoh-Flow aims at simplifying and structuring (i) the _declaration_, (ii) the _deployment_ and (iii) the _writing_ of "complex" applications that can span from the Cloud to the Thing (or close to it).
@@ -21,6 +18,9 @@ Zenoh-Flow aims at simplifying and structuring (i) the _declaration_, (ii) the _
 To these ends, Zenoh-Flow leverages the _data flow programming model_ --- where applications are viewed as a directed graph of computing units, and _Zenoh_ --- an Edge-native, data-centric, location transparent, communication middleware.
 
 This makes for a powerful combination as Zenoh offers flexibility and extensibility while data flow programming structures computations. The main benefit of this approach is that this allows us to decorrelate applications from the underlying infrastructure: data are published and subscribed to (_automatically_ with Zenoh-Flow) without the need to know where they are actually located.
+
+## Features Requests
+If you would like to see additional features, please submit an issue or reach us out on [Discord](https://discord.gg/zARxf4Dr8Y)
 
 -----
 
