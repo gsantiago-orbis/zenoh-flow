@@ -93,6 +93,11 @@ pub enum InstancesQuery {
     ///
     /// A Daemon that answers this query will only provide its *local view* of the data flow instance.
     Status(InstanceId),
+    /// Requests the full [DataFlowRecord] for the data flow instance identified by the provided [InstanceId].
+    ///
+    /// Returns the complete record including all nodes, ports, links, and mappings.
+    /// Useful for monitoring tools that need to reconstruct the data flow graph.
+    Describe(InstanceId),
     /// Requests the list of data flow instances currently running on the runtime.
     List,
 }
@@ -147,6 +152,20 @@ impl InstancesQuery {
                 .await
                 {
                     tracing::error!("Failed to reply to 'Status' query: {:?}", e);
+                }
+            }
+
+            InstancesQuery::Describe(instance_id) => {
+                if let Err(e) = reply(
+                    query,
+                    runtime
+                        .try_get_record(&instance_id)
+                        .await
+                        .map_err(|e| anyhow!("Record not found: {:?}", e)),
+                )
+                .await
+                {
+                    tracing::error!("Failed to reply to 'Describe' query: {:?}", e);
                 }
             }
 
